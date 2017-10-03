@@ -17,7 +17,7 @@ Name:          %scl_name
 Version:       7.2.0
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
-%define        release_prefix 2.RC1
+%define        release_prefix 4.RC3
 Release:       %{release_prefix}%{?dist}.cpanel
 Group:         Development/Languages
 License:       GPLv2+
@@ -142,6 +142,9 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
+* Mon Oct 02 2017  <dan@cpanel.net> - 7.2.0-4.RC3
+- EA-6857: Update 7.2.0 from RC1 to RC3
+
 * Thu Aug 31 2017 <dan@cpanel.net> - 7.2.0-2.RC1
 - EA-6758: Update 7.2.0 from beta3 to RC1
 
