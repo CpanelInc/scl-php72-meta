@@ -49,7 +49,6 @@ Requires:  scl-utils
 %description runtime
 Package shipping essential scripts to work with %scl Software Collection.
 
-
 %package build
 Summary:   Package shipping basic build configuration
 Group:     Development/Languages
