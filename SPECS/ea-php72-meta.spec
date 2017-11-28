@@ -17,7 +17,7 @@ Name:          %scl_name
 Version:       7.2.0
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
-%define        release_prefix 5.RC5
+%define        release_prefix 7.RC6
 Release:       %{release_prefix}%{?dist}.cpanel
 Group:         Development/Languages
 License:       GPLv2+
@@ -48,7 +48,6 @@ Requires:  scl-utils
 
 %description runtime
 Package shipping essential scripts to work with %scl Software Collection.
-
 
 %package build
 Summary:   Package shipping basic build configuration
@@ -111,6 +110,14 @@ help2man -N --section 7 ./h2m_helper -o %{scl_name}.7
 install -D -m 644 enable %{buildroot}%{_scl_scripts}/enable
 install -D -m 644 scldev %{buildroot}%{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 install -D -m 644 %{scl_name}.7 %{buildroot}%{_mandir}/man7/%{scl_name}.7
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/etc
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/share/doc
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/include
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/share/man/man1
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/bin
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/var/cache
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/var/tmp
+mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/%{_lib}
 
 %scl_install
 
@@ -129,7 +136,18 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 %doc README LICENSE
 %scl_files
 %{_mandir}/man7/%{scl_name}.*
-
+%dir /opt/cpanel/ea-php72/root/etc
+%dir /opt/cpanel/ea-php72/root/usr
+%dir /opt/cpanel/ea-php72/root/usr/share
+%dir /opt/cpanel/ea-php72/root/usr/share/doc
+%dir /opt/cpanel/ea-php72/root/usr/include
+%dir /opt/cpanel/ea-php72/root/usr/share/man
+%dir /opt/cpanel/ea-php72/root/usr/share/man/man1
+%dir /opt/cpanel/ea-php72/root/usr/bin
+%dir /opt/cpanel/ea-php72/root/usr/var
+%dir /opt/cpanel/ea-php72/root/usr/var/cache
+%dir /opt/cpanel/ea-php72/root/usr/var/tmp
+%dir /opt/cpanel/ea-php72/root/usr/%{_lib}
 
 %files build
 %defattr(-,root,root)
@@ -142,6 +160,12 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
+* Mon Nov 27 2017 Cory McIntire <cory@cpanel.net> - 7.2.0-7.RC6
+- EA-3099: Update 7.2.0 from RC5 to RC6 
+
+* Fri Nov 03 2017 Dan Muey <dan@cpanel.net> - 7.2.0-6.RC5
+- EA-3999: adjust files to get better cleanup on uninstall
+
 * Fri Oct 27 2017 Jacob Perkins <jacob.perkins@cpanel.net> - 7.2.0-5.RC5
 - EA-6923: Update 7.2.0 from RC3 to RC5
 
