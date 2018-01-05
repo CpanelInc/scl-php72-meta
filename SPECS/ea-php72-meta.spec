@@ -14,10 +14,10 @@
 
 Summary:       Package that installs PHP 7.2
 Name:          %scl_name
-Version:       7.2.0
+Version:       7.2.1
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
-%define        release_prefix 8
+%define        release_prefix 1
 Release:       %{release_prefix}%{?dist}.cpanel
 Group:         Development/Languages
 License:       GPLv2+
@@ -160,7 +160,10 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
-* Mon Dec 04 2017 <cory@cpanel.net> - 7.2.0-8
+* Fri Jan 05 2018 Jacob Perkins <jacob.perkins@cpanel.net> - 7.2.1-1
+- EA-7075: Update 7.2.1 from 7.2.0
+
+* Mon Dec 04 2017 Cory McIntire <cory@cpanel.net> - 7.2.0-8
 - EA-6992: Update 7.2.0 dropping from RC status
 
 * Mon Nov 27 2017 Cory McIntire <cory@cpanel.net> - 7.2.0-7.RC6
