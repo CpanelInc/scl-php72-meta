@@ -17,7 +17,7 @@ Name:          %scl_name
 Version:       7.2.1
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
-%define        release_prefix 3
+%define        release_prefix 4
 Release:       %{release_prefix}%{?dist}.cpanel
 Group:         Development/Languages
 License:       GPLv2+
@@ -123,6 +123,12 @@ mkdir -p %{buildroot}/opt/cpanel/ea-php72/root/usr/%{_lib}
 mkdir -p %{buildroot}/usr/local/cpanel/whostmgr/addonfeatures
 install %{SOURCE3} %{buildroot}/usr/local/cpanel/whostmgr/addonfeatures/%{name}
 
+# Even if this package doesn't use it we need to do this because if another
+# package does (e.g. pear licenses) it will be created and unowned by any RPM
+%if 0%{?_licensedir:1}
+mkdir %{buildroot}/%{_licensedir}
+%endif
+
 %scl_install
 
 tmp_version=$(echo %{scl_name_version} | sed -re 's/([0-9])([0-9])/\1\.\2/')
@@ -153,6 +159,9 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 %dir /opt/cpanel/ea-php72/root/usr/var/tmp
 %dir /opt/cpanel/ea-php72/root/usr/%{_lib}
 %attr(644, root, root) /usr/local/cpanel/whostmgr/addonfeatures/%{name}
+%if 0%{?_licensedir:1}
+%dir %{_licensedir}
+%endif
 
 %files build
 %defattr(-,root,root)
@@ -165,6 +174,9 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
+* Wed Jan 17 2018 Daniel Muey <dan@cpanel.net> - 7.2.1-4
+- EA-6958: Ensure ownership of _licensedir if it is set
+
 * Tue Jan 09 2018 Dan Muey <dan@cpanel.net> - 7.2.1-3
 - ZC-3247: Add support for the allowed-php list to WHM’s Feature Lists
 
