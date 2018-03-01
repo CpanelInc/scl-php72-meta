@@ -14,7 +14,7 @@
 
 Summary:       Package that installs PHP 7.2
 Name:          %scl_name
-Version:       7.2.2
+Version:       7.2.3
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
 %define        release_prefix 1
