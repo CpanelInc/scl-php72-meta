@@ -17,7 +17,7 @@ Name:          %scl_name
 Version:       7.2.11
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
-%define        release_prefix 1
+%define        release_prefix 2
 Release:       %{release_prefix}%{?dist}.cpanel
 Group:         Development/Languages
 License:       GPLv2+
@@ -177,6 +177,9 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
+* Fri Oct 26 2018 Tim Mullin <tim@cpanel.net> - 7.2.11-2
+- EA-7957: Added ea-apache24-mod_proxy_fcgi as a dependency of php-fpm.
+
 * Thu Oct 11 2018 Cory McIntire <cory@cpanel.net> - 7.2.11-1
 - Updated to version 7.2.11 via update_pkg.pl (EA-7908)
 
