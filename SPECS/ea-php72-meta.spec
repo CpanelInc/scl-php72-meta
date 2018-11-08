@@ -14,10 +14,10 @@
 
 Summary:       Package that installs PHP 7.2
 Name:          %scl_name
-Version:       7.2.11
+Version:       7.2.12
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
-%define        release_prefix 2
+%define        release_prefix 1
 Release:       %{release_prefix}%{?dist}.cpanel
 Group:         Development/Languages
 License:       GPLv2+
@@ -177,6 +177,9 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
+* Thu Nov 08 2018 Cory McIntire <cory@cpanel.net> - 7.2.12-1
+- Updated to version 7.2.12 via update_pkg.pl (EA-7999)
+
 * Fri Oct 26 2018 Tim Mullin <tim@cpanel.net> - 7.2.11-2
 - EA-7957: Added ea-apache24-mod_proxy_fcgi as a dependency of php-fpm.
 
