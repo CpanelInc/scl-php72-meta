@@ -14,7 +14,7 @@
 
 Summary:       Package that installs PHP 7.2
 Name:          %scl_name
-Version:       7.2.22
+Version:       7.2.23
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
 %define        release_prefix 1
@@ -180,6 +180,9 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
+* Fri Sep 27 2019 Cory McIntire <cory@cpanel.net> - 7.2.23-1
+- EA-8670: Update scl-php72 from v7.2.22 to v7.2.23
+
 * Tue Sep 03 2019 Cory McIntire <cory@cpanel.net> - 7.2.22-1
 - EA-8635: Update scl-php72 from v7.2.21 to v7.2.22
 
