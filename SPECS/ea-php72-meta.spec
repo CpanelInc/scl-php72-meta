@@ -14,7 +14,7 @@
 
 Summary:       Package that installs PHP 7.2
 Name:          %scl_name
-Version:       7.2.27
+Version:       7.2.28
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
 %define        release_prefix 1
@@ -33,11 +33,10 @@ BuildRequires: help2man
 # Temporary work-around
 BuildRequires: iso-codes
 
-# Commenting out the dependencies on php-cli and php-common
-# Not necessary because pear depends on php-cli and php-cli depends on php-common
-# Letting pear pull in php-cli as a dependency will ensure that php-cli is installed before pear.
-# Requires:      %{?scl_prefix}php-common
-# Requires:      %{?scl_prefix}php-cli
+Requires:      %{?scl_prefix}php-common
+Requires:      %{?scl_prefix}php-cli
+
+# Our code requires that pear be installed when the meta package is installed
 Requires:      %{?scl_prefix}pear
 
 %description
@@ -49,7 +48,6 @@ that install PHP 7.2 language.
 Summary:   Package that handles %scl Software Collection.
 Group:     Development/Languages
 Requires:  scl-utils
-Requires:  %scl
 
 %description runtime
 Package shipping essential scripts to work with %scl Software Collection.
@@ -180,6 +178,12 @@ sed -e 's/@SCL@/%{scl_macro_base}%{scl_name_version}/g' -e "s/@VERSION@/${tmp_ve
 
 
 %changelog
+* Thu Feb 20 2020 Cory McIntire <cory@cpanel.net> - 7.2.28-1
+- EA-8873: Update scl-php72 from v7.2.27 to v7.2.28
+
+* Fri Feb 07 2020 Tim Mullin <tim@cpanel.net> - 7.2.27-2
+- EA-8854: Fix circular dependencies in our PHP packages
+
 * Thu Jan 23 2020 Cory McIntire <cory@cpanel.net> - 7.2.27-1
 - EA-8850: Update scl-php72 from v7.2.26 to v7.2.27
 
