@@ -14,7 +14,7 @@
 
 Summary:       Package that installs PHP 7.2
 Name:          %scl_name
-Version:       7.2.31
+Version:       7.2.32
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
 %define        release_prefix 1
@@ -182,6 +182,9 @@ mkdir -p %{buildroot}/opt/cpanel/%{scl}/root/usr/share/locale
 
 
 %changelog
+* Thu Jul 09 2020 Cory McIntire <cory@cpanel.net> - 7.2.32-1
+- EA-9152: Update scl-php72 from v7.2.31 to v7.2.32
+
 * Thu May 14 2020 Cory McIntire <cory@cpanel.net> - 7.2.31-1
 - EA-9067: Update scl-php72 from v7.2.30 to v7.2.31
 
