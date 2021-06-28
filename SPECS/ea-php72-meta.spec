@@ -17,7 +17,7 @@ Name:          %scl_name
 Version:       7.2.34
 Vendor:        cPanel, Inc.
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4590 for more details
-%define        release_prefix 1
+%define        release_prefix 2
 Release:       %{release_prefix}%{?dist}.cpanel
 Group:         Development/Languages
 License:       GPLv2+
@@ -182,6 +182,9 @@ mkdir -p %{buildroot}/opt/cpanel/%{scl}/root/usr/share/locale
 
 
 %changelog
+* Mon Jun 28 2021 Travis Holloway <t.holloway@cpanel.net> - 7.2.34-2
+- EA-9013: Disable %check section
+
 * Thu Oct 01 2020 Cory McIntire <cory@cpanel.net> - 7.2.34-1
 - EA-9338: Update scl-php72 from v7.2.33 to v7.2.34
 
